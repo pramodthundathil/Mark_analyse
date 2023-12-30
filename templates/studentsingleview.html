@@ -1,0 +1,99 @@
+{% extends "teacherindex.html" %}
+{% block content %}
+<style>
+    .student_viewcontainer{
+        width:80%;
+        margin: auto;
+        border: 2px solid white;
+        padding: 30px;
+    }
+</style>
+
+<div class="container">
+    <div class="student_viewcontainer">
+
+        <h3 class="text-center">Student Marksheet</h3>
+    <table class="table">
+        <tr>
+            <td><h4 style="color:rgb(64, 255, 0)">Prediction Result</h4>(Result predicted in CGPA)
+                <br>
+            <h2 style="color:rgb(233, 115, 115)">Give Instructions and suggestions click <a class="btn btn-sm btn-red" href="{%url 'GiveSuggestions' data.id %}">Here</a></h2>
+                {% if pres >= 4 %}
+                <h5 style="color:rgb(162, 239, 81)">Studet have Chance To Pass the Exam</h5>
+                {% else %}
+                <!-- <h5 style="color:red">You May Have to Fail The Exam Please Incress Your Study Time</h5> -->
+                {% endif %}
+            </td>
+            <th><h3 style="color:rgb(0, 255, 64)">{{data.prediction_result}} CGPA</h3></th>
+            <!-- <td><a href="{%url 'PredictScore' %}" class="btn btn-danger">Predict Score</a></td> -->
+        </tr>
+        <tr>
+            <td><h4>Aptitude Test Mark</h4></td>
+            <th><h3>{{data.iq_marks}}</h3></th>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <th>{{data.name}}</th>
+        </tr>
+        <tr>
+            <td>Gender</td>
+            <th>{{data.gender}}</th>
+        </tr>
+        <tr>
+            <td>Study Streem</td>
+            <th>{{data.btech_branch}}</th>
+        </tr>
+        
+        <tr>
+            <td>Physics Mark In 10th</td>
+            <th>{{pygrade}}</th>
+        </tr>
+        <tr>
+            <td>Chemistry Mark In 10th</td>
+            <th>{{chgrade}}</th>
+        </tr>
+        <tr>
+            <td>Maths Mark In 10th</td>
+            <th>{{magrade}}</th>
+           
+        </tr>
+        <tr>
+            <td>Physics Mark In 12th</td>
+            <th>{{data.physics_12}}</th>
+        </tr>
+        <tr>
+            <td>Chemistry Mark In 10th</td>
+            <th>{{data.chemistry_12}}</th>
+        </tr>
+        <tr>
+            <td>Maths Mark In 12th</td>
+            <th>{{data.maths_12}}</th>
+        </tr>
+        <tr>
+            <td>Btech Sem1 Mark</td>
+            <th>{{data.btech_sem1}}</th>
+        </tr>
+        <tr>
+            <td>Btech Sem 2 Mark</td>
+            <th>{{data.btech_sem2}}</th>
+        </tr>
+        <tr>
+            <td>Btech Sem3 Mark</td>
+            <th>{{data.btech_sem3}}</th>
+        </tr>
+        <tr>
+            <td>Btech Sem4 Mark</td>
+            <th>{{data.btech_sem4}}</th>
+        </tr>
+        <tr>
+            <td>Total Time spent For Study</td>
+            <th>{{data.study_time}}</th>
+        </tr>
+        
+    </table>
+
+    </div>
+</div>
+</div>
+  
+{% endblock %}

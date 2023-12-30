@@ -1,0 +1,41 @@
+{% extends "adminhome.html" %}
+{% block content %}
+<style>
+    .question{
+        width:50%;
+        height: auto;
+        padding: 20px;
+        margin: auto;
+        border: .5px solid #dd5138;
+        text-align: center;
+
+    }
+    .question input, select{
+        width: 80%;
+        padding: 4px;
+        color:blue;
+    }
+</style>
+<div class="container mt-5">
+    {% for message in messages  %}
+
+    <h5 style="text-align: center;color:rgb(16, 233, 23)">{{message}}</h5>  
+    {% endfor %}
+    <div class="question">
+        <h4>Add New Aptitude Question</h4>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% for fields in form  %}
+
+            {{fields.label}}: <br>
+            {{fields}} <br><br>
+            {% endfor %}
+            <br><br>
+            <button class="btn btn-red">Add</button>
+        </form>
+
+    </div>
+</div>
+
+  
+{% endblock %}

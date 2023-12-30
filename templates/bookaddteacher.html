@@ -1,0 +1,70 @@
+{% extends "teacherindex.html" %}
+{% block content %}
+<style>
+    .student_viewcontainer {
+        width: 80%;
+        margin: auto;
+        border: 2px solid white;
+        padding: 30px;
+
+    }
+
+    .student_viewcontainer input, textarea,
+    select {
+        color: blue;
+    }
+
+    .student_viewcontainer input, select {
+        width: 85%;
+        padding: 4px;
+    }
+
+</style>
+
+<div class="container">
+    <div class="student_viewcontainer">
+        <h4>Add New Book</h4>
+        {% for message in messages %}
+        <h5 style="text-align: center;color:rgb(16, 233, 23)">{{message}}</h5>
+        {% endfor %}
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% for fields in form %}
+
+            {{fields.label}}: <br>
+            {{fields}} <br><br>
+              
+            {% endfor %}
+            <button class="btn btn-red" type="submit">Add Book</button>
+        </form>
+
+    </div>
+</div>
+<br><br><br>
+<div class="container">
+    <div class="student_viewcontainer">
+        <h4>Previously Added Books</h4>
+        {% for message in messages %}
+        <h5 style="text-align: center;color:rgb(16, 233, 23)">{{message}}</h5>
+        {% endfor %}
+        <table class="table">
+            <tr>
+                <th>Book</th>
+                <!-- <th>Date added</th> -->
+                <th>Delete</th>
+            </tr>
+            {% for item in books %}
+              
+            <tr>
+                <td>{{item}}</td>
+                <!-- <td>{{item.date}}</td> -->
+                <td><a href="{%url 'DeleteBook' item.id %}" class="btn btn-red btn-sm ">delete</a></td>
+            </tr>
+            {% endfor %}
+
+        </table>
+
+    </div>
+</div>
+</div>
+{% endblock %}

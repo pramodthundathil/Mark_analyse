@@ -1,0 +1,65 @@
+{% extends "teacherindex.html" %}
+{%block content %}
+<style>
+    .student_viewcontainer{
+        width:80%;
+        margin: auto;
+        border: 2px solid white;
+        padding: 30px;
+        
+    }
+    .student_viewcontainer textarea, select{
+        color:blue;
+    }
+    .student_viewcontainer select{
+        width:85%;
+        padding: 4px;
+    }
+    .partition{
+        padding: 20px;
+        margin-bottom: 2px solid red;
+    }
+    .partition span{
+        font-size: larger;
+        color:aqua
+    }
+</style>
+
+<div class="container">
+    <div class="student_viewcontainer">
+<h4>Suggestions</h4>
+<h3>Student Name: {{data.name}}</h3>
+<h5>Btech Streem: {{data.btech_branch}}</h5>
+{% for message in messages %}
+    <h5 style="text-align: center;color:rgb(16, 233, 23)">{{message}}</h5>  
+    {% endfor %}
+<form method="post">
+    {% csrf_token %}
+    {% for fields in form  %}
+    {{fields.label}}: <br>
+    {{fields}} <br><br>
+      
+    {% endfor %}
+    <button class="btn btn-sm btn-red" type="submit">Submit</button>
+</form>
+
+    </div>
+</div>
+<br><br><br>
+<div class="container mt-3">
+    <div class="student_viewcontainer mt-3">
+        <h4>Previous Recomendations</h4>
+        {% for item in prevreco  %}
+        <div class="partition">
+            <h5>{{forloop.counter}}.  {{item.date}}</h5>
+            <h5>{{item.recommendation}}</h5>
+            <h5>Suggested Book <span>{{item.book}}</span> </h5>
+            <h5>Student Repaly <span>{{item.student_Repaly}}</span> </h5>
+            <a href="{%url 'DeleteRecommentation' item.id %}" class="btn btn-sm btn-danger">Delete</a>
+        </div>
+          
+        {% endfor %}
+    </div>
+</div>
+</div>
+{% endblock %}

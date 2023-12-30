@@ -1,0 +1,35 @@
+{% extends "adminhome.html" %}
+{% block content %}
+<style>
+    .formcontainer{
+        width:90%;
+        border: 1px solid red;
+        padding: 30px;
+        text-align: center;
+
+    }
+    .formcontainer input{
+        width:70%;
+        padding: 5px;
+        color:blue;
+    }
+</style>
+<div class="container">
+    <div class="formcontainer">
+        <h4>Add Teachers</h4>
+
+        <form method="post">
+            {% csrf_token %}
+            {% for fields in form  %}
+            {{fields.label}}: <br>
+            {{fields}} <br><br>
+              
+            {% endfor %}
+            <button type="submit" class="btn btn-red">Add Now</button>
+        </form>
+
+    </div>
+</div>
+
+</div>  
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends "index.html" %}
+{% block content %}
+<style>
+    .itemcontainer {
+        width: 90%;
+        margin: auto;
+        padding: 20px;
+        border: 2px solid red;
+    }
+
+    .recomencont {
+        background-color: white;
+        color: black;
+        padding: 20px;
+    }
+
+    .recomencont input {
+        width: 60%;
+        padding: 4px;
+    }
+    .bookcontainer{
+        width:30%;
+        padding: 10px;
+        border: 1px solid black;
+    }
+</style>
+<div class="container">
+    <div class="itemcontainer">
+        <h4>Teachers Recommentations for you</h4>
+        {% for item in prerec  %}
+
+        <div class="recomencont">
+
+            <h5>{{forloop.counter}}. {{item.date}}</h5>
+            <h3> Teacher: <span style="color:blue">{{item.Teacher}}</span></h3>
+            <h5>{{item.recommendation}}</h5>
+            <h5>Suggested Book <span>{{item.book}}</span> </h5>
+
+            <form action="{%url 'LeaveRepaly' item.id %}" method="post">
+                {% csrf_token %}
+                <h5>Student Repaly :</h5>
+                <input type="text" value="{{item.student_Repaly}}" name="reaply"><br>
+                <button type="submit" class="btn btn-sm btn-info">Repaly</button>
+            </form>
+            <br>
+            {% if item.book == None %}
+            <h5 style="color:red">You Dont Have any Book Suggesion From Teacher</h5>
+            {% else %}
+            <h5 style="color:blue">You Have A Book Suggesion</h5>
+            <div class="bookcontainer">
+                <img src="{{item.book.book_image.url}}" style="width:80%;" alt="">
+                <h3>{{item.book}} </h3>
+                <a href="{{item.book.referencelink}}" target="_blank" class="btn btn-warning">Buy Now</a>
+            </div>
+            {% endif %}
+
+        </div>
+        <br><br>
+        {% endfor %}
+
+    </div>
+</div>
+
+</div>
+{% endblock %}

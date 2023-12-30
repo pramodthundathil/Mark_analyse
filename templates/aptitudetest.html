@@ -1,0 +1,59 @@
+{% extends "index.html" %}
+{% block content %}
+<style>
+    .testcontainer {
+        width: 90%;
+        margin: auto;
+        border: 1px solid rgb(214, 115, 115);
+        padding: 30px;
+    }
+
+    .testcontainer input {
+        margin-left: 100px;
+        margin-right: 10px;
+    }
+</style>
+<div class="container">
+    
+    {% for message in messages %}
+    <h5 style="text-align: center;color:rgb(16, 233, 23)">{{message}}</h5>  
+    {% endfor %}
+
+    <h4 style="text-align: center;">Aptitude test</h4>
+    <div class="testcontainer">
+        <form method="post">
+            {% csrf_token %}
+        <table class="table">
+            mark the right fields
+            {% for qs in questions %}
+            <tr>
+                <th colspan="4" style="background-color:lightblue;color:black">
+                    {{forloop.counter}}.
+                    {{qs.question}} ?
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    <input type="radio" name="{{qs.id}}" value="Option1" required> {{qs.option1}}
+                </td>
+                <td>
+                    <input type="radio" name="{{qs.id}}" value="Option2" required>{{qs.option2}}
+                </td>
+                <td>
+                    <input type="radio" name="{{qs.id}}" value="Option3" required>{{qs.option3}}
+                </td>
+                <td>
+                    <input type="radio" name="{{qs.id}}" value="Option4" required>{{qs.option4}}
+                </td>
+                <br>
+            </tr>
+            {% endfor %}
+        </table>
+        <button type="submit" class="btn btn-lg btn-red">Submit</button>
+    </form>
+
+    </div>
+</div>
+</div>
+
+{% endblock %}
