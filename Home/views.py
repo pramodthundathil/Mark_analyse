@@ -5,10 +5,17 @@ from django.contrib import messages
 from django.contrib.auth.models import User, Group
 from .decorators import admin_only
 from predict.models import Question,Datamodel
+from Teacher.models import ChatContent
+
 
 @admin_only
 def Index(request):
-    return render(request,"index.html")
+    chat = ChatContent.objects.all()
+    print(len(chat), "......................")
+    context = {
+        "chat":chat
+    }
+    return render(request,"index.html",context)
 
 def AdminHome(request):
     question = Question.objects.all()
@@ -21,8 +28,10 @@ def AdminHome(request):
 
 def TeacherHome(request):
     data = Datamodel.objects.all()
+    chat = ChatContent.objects.all()
     context = {
-        "data":data
+        "data":data,
+        "chat":chat
     }
     return render(request,"teacherindex.html",context)
 

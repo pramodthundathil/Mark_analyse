@@ -7,5 +7,9 @@ urlpatterns = [
     path("DeleteBook/<int:pk>",views.DeleteBook,name="DeleteBook"),
     path("RecommendationsStudentView",views.RecommendationsStudentView,name="RecommendationsStudentView"),
     path("LeaveRepaly/<int:pk>",views.LeaveRepaly,name="LeaveRepaly"),
-    path("DeleteRecommentation/<int:pk>",views.DeleteRecommentation,name="DeleteRecommentation")
+    path("DeleteRecommentation/<int:pk>",views.DeleteRecommentation,name="DeleteRecommentation"),
+    path("ChatAdd",views.ChatAdd,name="ChatAdd"),
+
+
+    
 ]

@@ -22,5 +22,10 @@ class Recomendations(models.Model):
     date = models.DateField(auto_now_add=True)
     student_Repaly = models.CharField(max_length=255,null=True)
     Teacher = models.CharField(max_length=255,null=True)
+
+class ChatContent(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    message = models.CharField(max_length=1000)
+    time = models.DateTimeField(auto_now_add=True)
     
     

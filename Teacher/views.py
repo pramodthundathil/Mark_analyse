@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from predict.models import Datamodel
 from .froms import BookAddForm, SuggestionForm
-from .models import Recomendations, Books
+from .models import Recomendations, Books, ChatContent
 from django.contrib import messages
 
 # Create your views here.
@@ -147,4 +147,13 @@ def LeaveRepaly(request,pk):
         messages.info(request,"Replay Sent To teacher")
         return redirect(RecommendationsStudentView)
     return redirect(RecommendationsStudentView)
+
+
+def ChatAdd(request):
+    if request.method == "POST":
+        chat = request.POST["chat"]
+        chatdata = ChatContent.objects.create(message = chat, user = request.user)
+        chatdata.save()
+        return redirect("Index")
+    return redirect("Index")
     

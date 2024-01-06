@@ -30,8 +30,18 @@
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {% for fields in form %}
+{% if fields.label == "Auther"  %}
+  <label for="">Author:</label><br>
 
-            {{fields.label}}: <br>
+  {% elif fields.label == "Descrioption" %}
+  <label for="">Discription:</label><br>
+  {% elif fields.label == "Strem" %}
+  <label for="">Streem:</label><br>
+
+  {% else %}
+  {{fields.label}}: <br>
+{% endif %}
+
             {{fields}} <br><br>
               
             {% endfor %}
