@@ -3,3 +3,8 @@ from .models import *
 
 # Register your models here.
 admin.site.register(Datamodel)
+admin.site.register(Question)
+
+
+
+
