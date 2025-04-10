@@ -133,6 +133,8 @@ def MarkProfile(request):
             pygrade = "A"
         elif data.physics_10 <= 100 and data.physics_10 >90:
             pygrade = "A+"
+        else:
+            pygrade = "E"
         
         if data.chemistry_10 <=20:
             chgrade = "E"
@@ -173,6 +175,8 @@ def MarkProfile(request):
             magrade = "A"
         elif data.maths_10 <= 100 and data.maths_10 >90:
             magrade = "A+"
+        else:
+            magrade = "E"
             
         context["data"] = data
         context["pres"] = float(predict_value)

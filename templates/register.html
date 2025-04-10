@@ -57,7 +57,7 @@
             <li>
               <a href="{%url 'Index' %}">Home</a>
             </li>
-            <li><a href="">Contact</a></li>
+            <li><a href="{%url 'Parent_signup' %}">Parent Register</a></li>
             <li><a href="{%url 'SignIn' %}">Login</a></li>
           </ul>
         </div>
@@ -113,6 +113,8 @@
                   
                 {% endfor %}
             <button type="submit" class="btn btn-lg btn-red">Register Now <span class="ti-arrow-right"></span></button>
+            <br><br>
+            Register As Parent <a class="text-light" href="{%url 'Parent_signup' %}">Parent Register</a>
                <br><br> Have an Account SignIn <a style="color:white" href="{%url 'SignIn' %}">Here</a>
             </form>
             

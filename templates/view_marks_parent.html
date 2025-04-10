@@ -1,0 +1,39 @@
+{% extends "parenthome.html" %}
+{% block content %}
+
+<div class="container">
+    <div class="student_viewcontainer">
+            
+            <h3 class="text-center"> Marks To Students </h3>
+           
+<br><br>
+            <table class="table table-bordered mt-4">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Student</th>
+                        <th scope="col">Exam</th>
+                        <th scope="col">Subject</th>
+                        <th scope="col">Marks</th>
+                        <th scope="col">Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for mark in marks %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ mark.user.username }}</td>
+                        <td>{{ mark.exam }}</td>
+                        <td>{{ mark.subject }}</td>
+                        <td>{{ mark.marks }}</td>
+                        <td>{{ mark.date }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+
+    </div>
+</div>
+</div>
+{% endblock %}

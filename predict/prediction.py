@@ -18,8 +18,8 @@ print(data["IQ"].value_counts())
 #                     title="Time Spent and Marks Scored", trendline="ols")
 # figure.show()
 
-correlation = data.corr()
-print(correlation["CGPA"].sort_values(ascending=False))
+# correlation = data.corr()
+# print(correlation["CGPA"].sort_values(ascending=False))
 
 x = np.array(data[["Time", "IQ","tenth","twelve","S1","S2","S3","S4"]])
 y = np.array(data["CGPA"])
@@ -30,8 +30,8 @@ xtrain, xtest, ytrain, ytest = train_test_split(x, y,
 model = LinearRegression()
 model.fit(xtrain, ytrain)
 model.score(xtest, ytest)
-features = np.array([[10, 7,97,99,9.2,8.2,8.6,7.4]])
-print(model.predict(features))
+# features = np.array([[10, 7,97,99,9.2,8.2,8.6,7.4]])
+# print(model.predict(features))
 
 # data = pd.read_csv("predict/Student_Marks.csv")
 # print(data.head(10))

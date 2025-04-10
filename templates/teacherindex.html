@@ -122,7 +122,8 @@
             <li>
               <a href="{%url 'Index' %}">Home</a>
             </li>
-            <li><a href="">Contact</a></li>
+            <li><a href="{%url 'add_exam' %}">Exams</a></li>
+            <li><a href="{%url 'add_marks_to_students' %}">Add Marks</a></li>
             <li><a href="{%url 'Addbook' %}">Books</a></li>
             
             {% if request.user.is_authenticated %}
@@ -175,7 +176,7 @@
                 <div class="col-md-4 col-sm-6 feature">
                     <img src="{% static 'img/speaker-1.png' %}" class="speaker-img">
                     <h3>{{i.name}}</h3>
-                    <h5>Diploma Branch: {{i.btech_branch}}</h5>
+                    <h5> Branch: {{i.btech_branch}}</h5>
                     <h4 style="color:rgb(20, 203, 32)">Predicted CGPA: {{i.prediction_result}}</h4>
                     <h5>Aptitude Score: {{i.iq_marks}}</h5>
                     <a href="{%url 'StudentDeatilsView' i.id %}" class="btn btn-info btn-sm">View Student</a>

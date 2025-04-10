@@ -45,6 +45,18 @@ class Question(models.Model):
     
     
     
+class Examination(models.Model):
+    exam_name = models.CharField(max_length=100)
+    exam_date = models.DateField()
+    def __str__(self):
+        return str(self.exam_name + " " + str(self.exam_date))
     
-    
-    
+
+class mark_exams(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='student_mark')
+    exam = models.ForeignKey(Examination, on_delete=models.CASCADE, related_name='exam')
+    subject = models.CharField(max_length=100 )
+    marks = models.FloatField()
+    date = models.DateField(auto_now_add=True)
+    def __str__(self):
+        return str(self.user.username + " " + self.subject + " " + str(self.marks) + " " + str(self.date))

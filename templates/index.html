@@ -125,6 +125,7 @@
             {% if request.user.is_authenticated %}
             <li><a href="{%url 'MarkProfile' %}">Profile</a></li>
             <li><a href="{%url 'RecommendationsStudentView' %}">Recommendations</a></li>
+            <li><a href="{%url 'Mymarks' %}">My Marks </a></li>
             <li style="color:#dd5138">{{request.user.first_name}}<a href="{%url 'SignOut' %}">Logout</a></li>
 
               

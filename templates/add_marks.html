@@ -1,0 +1,73 @@
+{% extends "teacherindex.html" %}
+{% block content %}
+
+<div class="container">
+    <div class="student_viewcontainer">
+            
+            <h3 class="text-center">Add Marks To Students</h3>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addExamModal">
+                Add Marks
+            </button>
+            {% for m in messages  %}
+            <h6 style="color:red">{{m}}</h6>
+          {% endfor %}
+
+            <!-- Modal -->
+            <div class="modal fade" id="addExamModal" tabindex="-1" aria-labelledby="addExamModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" style="color: black !important;" id="addExamModalLabel">Add Marks</h5>
+                            <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">x</button>
+                        </div>
+                        <form method="POST" >
+                            {% csrf_token %}
+                            <div class="modal-body" style="color: black !important;">
+
+                                {% for field  in form %}
+                                <div class="mb-3">
+                                    <label for="examName" class="form-label text-dark">{{field.label}}</label>
+                                    {{field}}
+                                </div>
+                                {% endfor %}
+                                
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+<br><br>
+            <table class="table table-bordered mt-4">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Student</th>
+                        <th scope="col">Exam</th>
+                        <th scope="col">Subject</th>
+                        <th scope="col">Marks</th>
+                        <th scope="col">Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for mark in marks %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ mark.user.username }}</td>
+                        <td>{{ mark.exam }}</td>
+                        <td>{{ mark.subject }}</td>
+                        <td>{{ mark.marks }}</td>
+                        <td>{{ mark.date }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+
+    </div>
+</div>
+</div>
+{% endblock %}

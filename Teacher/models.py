@@ -28,4 +28,8 @@ class ChatContent(models.Model):
     message = models.CharField(max_length=1000)
     time = models.DateTimeField(auto_now_add=True)
     
+
+class Students_mark(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    test_name = models.CharField(max_length=100, )
     

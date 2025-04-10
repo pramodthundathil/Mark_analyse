@@ -41,5 +41,8 @@ def admin_only(view_func):
         
         if group == 'teacher':
             return redirect('TeacherHome')
+        
+        if group == 'parent':
+            return redirect('ParentHome')
               
-    return wrapper_function
+    return wrapper_function 
